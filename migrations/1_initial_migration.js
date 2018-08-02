@@ -1,11 +1,14 @@
-const Deploy = require("../utils/Deploy");
+/* global artifacts */
+
+const Deploy = require("solidity-utils/helpers/Deployer");
+
 const Migrations = artifacts.require("./Migrations.sol");
 
-module.exports = async (deployer, network, accounts) => {
+module.exports = async (deployer, network) => {
   if (network === "develop") return;
 
   const deploy = Deploy(deployer, network);
 
   // --> migrations
-  const migrations = await deploy(Migrations);
+  await deploy(Migrations);
 };

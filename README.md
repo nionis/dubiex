@@ -1,8 +1,8 @@
 # Introduction
 
-This repository contains dubiex related contracts developed by The Singularity Group team.
+This repository contains contracts for the DubiEx exchange.
 
 ## Contracts:
 
-* DubiEx
-* ERC20 Token Generator
+- DubiEx
+- ERC20 Token Generator

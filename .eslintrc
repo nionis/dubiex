@@ -1,0 +1,20 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "quotes": "off",
+    "arrow-body-style": "off",
+    "no-mixed-operators": "off",
+    "prefer-destructuring": "warn",
+    "no-param-reassign": "warn",
+    "arrow-parens": ["error", "as-needed"],
+    "object-curly-newline": ["error", { "multiline": true }],
+    "no-unused-vars": "warn",
+    "consistent-return": "off",
+    "no-console": "off"
+  }
+}

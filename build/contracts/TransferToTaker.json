@@ -1,0 +1,3021 @@
+{
+  "contractName": "TransferToTaker",
+  "abi": [],
+  "bytecode": "0x604c602c600b82828239805160001a60731460008114601c57601e565bfe5b5030600052607381538281f30073000000000000000000000000000000000000000030146080604052600080fd00a165627a7a723058207f6165dfc31a695fbff595d4fbcb0e6b6fd9533cb52fc9d3f5800236702c27fc0029",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fd00a165627a7a723058207f6165dfc31a695fbff595d4fbcb0e6b6fd9533cb52fc9d3f5800236702c27fc0029",
+  "sourceMap": "247:988:4:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
+  "deployedSourceMap": "247:988:4:-;;;;;;;;",
+  "source": "pragma solidity 0.4.24;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20.sol\";\nimport \"openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol\";\nimport \"openzeppelin-solidity/contracts/token/ERC721/ERC721.sol\";\nimport \"./Types.sol\";\n\n\nlibrary TransferToTaker {\n  using SafeERC20 for ERC20;\n\n  function ethereum(Types.Item memory makerItem, Types.Item memory takerItem) private {\n    takerItem.owner.transfer(makerItem.value);\n  }\n\n  function erc20(Types.Item memory makerItem, Types.Item memory takerItem) private {\n    ERC20(makerItem.contractAddress).safeTransfer(this, makerItem.value);\n  }\n\n  function erc721(Types.Item memory makerItem, Types.Item memory takerItem) private {\n    ERC721(makerItem.contractAddress).safeTransferFrom(this, makerItem.owner, makerItem.value);\n  }\n\n  function transfer(Types.Item memory makerItem, Types.Item memory takerItem) internal {\n    if (makerItem.currencyType == Types.CurrencyType.ETHEREUM) ethereum(makerItem, takerItem);\n    else if (makerItem.currencyType == Types.CurrencyType.ERC20) erc20(makerItem, takerItem);\n    else if (makerItem.currencyType == Types.CurrencyType.ERC721) erc721(makerItem, takerItem);\n    else {\n      revert(\"currencyType does not exist\");\n    }\n  }\n}",
+  "sourcePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/TransferToTaker.sol",
+  "ast": {
+    "absolutePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/TransferToTaker.sol",
+    "exportedSymbols": {
+      "TransferToTaker": [
+        1265
+      ]
+    },
+    "id": 1266,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1153,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+        "file": "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+        "id": 1154,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 2007,
+        "src": "25:63:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol",
+        "file": "openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol",
+        "id": 1155,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 2101,
+        "src": "89:67:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol",
+        "file": "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol",
+        "id": 1156,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 2402,
+        "src": "157:65:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/Types.sol",
+        "file": "./Types.sol",
+        "id": 1157,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 1289,
+        "src": "223:21:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1265,
+        "linearizedBaseContracts": [
+          1265
+        ],
+        "name": "TransferToTaker",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 1160,
+            "libraryName": {
+              "contractScope": null,
+              "id": 1158,
+              "name": "SafeERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2100,
+              "src": "281:9:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeERC20_$2100",
+                "typeString": "library SafeERC20"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "275:26:4",
+            "typeName": {
+              "contractScope": null,
+              "id": 1159,
+              "name": "ERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2006,
+              "src": "295:5:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20_$2006",
+                "typeString": "contract ERC20"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 1176,
+              "nodeType": "Block",
+              "src": "389:52:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1172,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1162,
+                          "src": "420:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1173,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1273,
+                        "src": "420:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1167,
+                          "name": "takerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1164,
+                          "src": "395:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1170,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "owner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1277,
+                        "src": "395:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "id": 1171,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "395:24:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 1174,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "395:41:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1175,
+                  "nodeType": "ExpressionStatement",
+                  "src": "395:41:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1177,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "ethereum",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1165,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1162,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "323:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1161,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "323:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1164,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "352:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1163,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "352:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "322:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1166,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "389:0:4"
+            },
+            "scope": 1265,
+            "src": "305:136:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1194,
+              "nodeType": "Block",
+              "src": "526:79:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1189,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3583,
+                        "src": "578:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1190,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1179,
+                          "src": "584:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1191,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1273,
+                        "src": "584:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1185,
+                              "name": "makerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1179,
+                              "src": "538:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            },
+                            "id": 1186,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "contractAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1275,
+                            "src": "538:25:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 1184,
+                          "name": "ERC20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2006,
+                          "src": "532:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC20_$2006_$",
+                            "typeString": "type(contract ERC20)"
+                          }
+                        },
+                        "id": 1187,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "532:32:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20_$2006",
+                          "typeString": "contract ERC20"
+                        }
+                      },
+                      "id": 1188,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "safeTransfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2060,
+                      "src": "532:45:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_contract$_ERC20Basic_$2038_$_t_address_$_t_uint256_$returns$__$bound_to$_t_contract$_ERC20Basic_$2038_$",
+                        "typeString": "function (contract ERC20Basic,address,uint256)"
+                      }
+                    },
+                    "id": 1192,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "532:68:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1193,
+                  "nodeType": "ExpressionStatement",
+                  "src": "532:68:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1195,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "erc20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1182,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1179,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1195,
+                  "src": "460:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1178,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "460:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1181,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1195,
+                  "src": "489:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1180,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "489:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "459:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1183,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "526:0:4"
+            },
+            "scope": 1265,
+            "src": "445:160:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1214,
+              "nodeType": "Block",
+              "src": "691:101:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1207,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3583,
+                        "src": "748:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1208,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1197,
+                          "src": "754:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1209,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "owner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1277,
+                        "src": "754:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1210,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1197,
+                          "src": "771:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1211,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1273,
+                        "src": "771:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1203,
+                              "name": "makerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1197,
+                              "src": "704:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            },
+                            "id": 1204,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "contractAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1275,
+                            "src": "704:25:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 1202,
+                          "name": "ERC721",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2401,
+                          "src": "697:6:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC721_$2401_$",
+                            "typeString": "type(contract ERC721)"
+                          }
+                        },
+                        "id": 1205,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "697:33:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC721_$2401",
+                          "typeString": "contract ERC721"
+                        }
+                      },
+                      "id": 1206,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "safeTransferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2499,
+                      "src": "697:50:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,address,uint256) external"
+                      }
+                    },
+                    "id": 1212,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "697:90:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1213,
+                  "nodeType": "ExpressionStatement",
+                  "src": "697:90:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1215,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "erc721",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1200,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1197,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1215,
+                  "src": "625:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1196,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "625:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1199,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1215,
+                  "src": "654:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1198,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "654:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "624:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1201,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "691:0:4"
+            },
+            "scope": 1265,
+            "src": "609:183:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1263,
+              "nodeType": "Block",
+              "src": "881:352:4",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                      "typeString": "enum Types.CurrencyType"
+                    },
+                    "id": 1227,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1222,
+                        "name": "makerItem",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1217,
+                        "src": "891:9:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                          "typeString": "struct Types.Item memory"
+                        }
+                      },
+                      "id": 1223,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "currencyType",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1279,
+                      "src": "891:22:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                        "typeString": "enum Types.CurrencyType"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1224,
+                          "name": "Types",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1288,
+                          "src": "917:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_Types_$1288_$",
+                            "typeString": "type(library Types)"
+                          }
+                        },
+                        "id": 1225,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "CurrencyType",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1271,
+                        "src": "917:18:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CurrencyType_$1271_$",
+                          "typeString": "type(enum Types.CurrencyType)"
+                        }
+                      },
+                      "id": 1226,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "ETHEREUM",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "917:27:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                        "typeString": "enum Types.CurrencyType"
+                      }
+                    },
+                    "src": "891:53:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "condition": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                        "typeString": "enum Types.CurrencyType"
+                      },
+                      "id": 1238,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1233,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "991:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1234,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "currencyType",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1279,
+                        "src": "991:22:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                          "typeString": "enum Types.CurrencyType"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1235,
+                            "name": "Types",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1288,
+                            "src": "1017:5:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_Types_$1288_$",
+                              "typeString": "type(library Types)"
+                            }
+                          },
+                          "id": 1236,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "CurrencyType",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1271,
+                          "src": "1017:18:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_CurrencyType_$1271_$",
+                            "typeString": "type(enum Types.CurrencyType)"
+                          }
+                        },
+                        "id": 1237,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberName": "ERC20",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1017:24:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                          "typeString": "enum Types.CurrencyType"
+                        }
+                      },
+                      "src": "991:50:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseBody": {
+                      "condition": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                          "typeString": "enum Types.CurrencyType"
+                        },
+                        "id": 1249,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1244,
+                            "name": "makerItem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1217,
+                            "src": "1085:9:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          },
+                          "id": 1245,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "currencyType",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1279,
+                          "src": "1085:22:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                            "typeString": "enum Types.CurrencyType"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1246,
+                              "name": "Types",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1288,
+                              "src": "1111:5:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_Types_$1288_$",
+                                "typeString": "type(library Types)"
+                              }
+                            },
+                            "id": 1247,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "CurrencyType",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1271,
+                            "src": "1111:18:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_CurrencyType_$1271_$",
+                              "typeString": "type(enum Types.CurrencyType)"
+                            }
+                          },
+                          "id": 1248,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "ERC721",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1111:25:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                            "typeString": "enum Types.CurrencyType"
+                          }
+                        },
+                        "src": "1085:51:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "falseBody": {
+                        "id": 1259,
+                        "nodeType": "Block",
+                        "src": "1177:52:4",
+                        "statements": [
+                          {
+                            "expression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "hexValue": "63757272656e63795479706520646f6573206e6f74206578697374",
+                                  "id": 1256,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "string",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1192:29:4",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_stringliteral_e5cb6bb55c0dfbf3257fbfc6c8412c3c0ccd0c217919a2daed3cf7779ff14e89",
+                                    "typeString": "literal_string \"currencyType does not exist\""
+                                  },
+                                  "value": "currencyType does not exist"
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_stringliteral_e5cb6bb55c0dfbf3257fbfc6c8412c3c0ccd0c217919a2daed3cf7779ff14e89",
+                                    "typeString": "literal_string \"currencyType does not exist\""
+                                  }
+                                ],
+                                "id": 1255,
+                                "name": "revert",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [
+                                  3543,
+                                  3544
+                                ],
+                                "referencedDeclaration": 3544,
+                                "src": "1185:6:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                                  "typeString": "function (string memory) pure"
+                                }
+                              },
+                              "id": 1257,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1185:37:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_tuple$__$",
+                                "typeString": "tuple()"
+                              }
+                            },
+                            "id": 1258,
+                            "nodeType": "ExpressionStatement",
+                            "src": "1185:37:4"
+                          }
+                        ]
+                      },
+                      "id": 1260,
+                      "nodeType": "IfStatement",
+                      "src": "1081:148:4",
+                      "trueBody": {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 1251,
+                              "name": "makerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1217,
+                              "src": "1145:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "id": 1252,
+                              "name": "takerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1219,
+                              "src": "1156:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              },
+                              {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            ],
+                            "id": 1250,
+                            "name": "erc721",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1215,
+                            "src": "1138:6:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Item_$1280_memory_ptr_$_t_struct$_Item_$1280_memory_ptr_$returns$__$",
+                              "typeString": "function (struct Types.Item memory,struct Types.Item memory)"
+                            }
+                          },
+                          "id": 1253,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1138:28:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 1254,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1138:28:4"
+                      }
+                    },
+                    "id": 1261,
+                    "nodeType": "IfStatement",
+                    "src": "987:242:4",
+                    "trueBody": {
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1240,
+                            "name": "makerItem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1217,
+                            "src": "1049:9:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 1241,
+                            "name": "takerItem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1219,
+                            "src": "1060:9:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            },
+                            {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          ],
+                          "id": 1239,
+                          "name": "erc20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1195,
+                          "src": "1043:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Item_$1280_memory_ptr_$_t_struct$_Item_$1280_memory_ptr_$returns$__$",
+                            "typeString": "function (struct Types.Item memory,struct Types.Item memory)"
+                          }
+                        },
+                        "id": 1242,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1043:27:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_tuple$__$",
+                          "typeString": "tuple()"
+                        }
+                      },
+                      "id": 1243,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1043:27:4"
+                    }
+                  },
+                  "id": 1262,
+                  "nodeType": "IfStatement",
+                  "src": "887:342:4",
+                  "trueBody": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1229,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "955:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 1230,
+                          "name": "takerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1219,
+                          "src": "966:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          },
+                          {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        ],
+                        "id": 1228,
+                        "name": "ethereum",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1177,
+                        "src": "946:8:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Item_$1280_memory_ptr_$_t_struct$_Item_$1280_memory_ptr_$returns$__$",
+                          "typeString": "function (struct Types.Item memory,struct Types.Item memory)"
+                        }
+                      },
+                      "id": 1231,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "946:30:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 1232,
+                    "nodeType": "ExpressionStatement",
+                    "src": "946:30:4"
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1264,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "transfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1220,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1217,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1264,
+                  "src": "814:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1216,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "814:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1219,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1264,
+                  "src": "843:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1218,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "843:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "813:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1221,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "881:0:4"
+            },
+            "scope": 1265,
+            "src": "796:437:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1266,
+        "src": "247:988:4"
+      }
+    ],
+    "src": "0:1235:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/TransferToTaker.sol",
+    "exportedSymbols": {
+      "TransferToTaker": [
+        1265
+      ]
+    },
+    "id": 1266,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1153,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+        "file": "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol",
+        "id": 1154,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 2007,
+        "src": "25:63:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol",
+        "file": "openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol",
+        "id": 1155,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 2101,
+        "src": "89:67:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol",
+        "file": "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol",
+        "id": 1156,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 2402,
+        "src": "157:65:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/Types.sol",
+        "file": "./Types.sol",
+        "id": 1157,
+        "nodeType": "ImportDirective",
+        "scope": 1266,
+        "sourceUnit": 1289,
+        "src": "223:21:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1265,
+        "linearizedBaseContracts": [
+          1265
+        ],
+        "name": "TransferToTaker",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 1160,
+            "libraryName": {
+              "contractScope": null,
+              "id": 1158,
+              "name": "SafeERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2100,
+              "src": "281:9:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeERC20_$2100",
+                "typeString": "library SafeERC20"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "275:26:4",
+            "typeName": {
+              "contractScope": null,
+              "id": 1159,
+              "name": "ERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2006,
+              "src": "295:5:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20_$2006",
+                "typeString": "contract ERC20"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 1176,
+              "nodeType": "Block",
+              "src": "389:52:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1172,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1162,
+                          "src": "420:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1173,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1273,
+                        "src": "420:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1167,
+                          "name": "takerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1164,
+                          "src": "395:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1170,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "owner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1277,
+                        "src": "395:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "id": 1171,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "395:24:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 1174,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "395:41:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1175,
+                  "nodeType": "ExpressionStatement",
+                  "src": "395:41:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1177,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "ethereum",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1165,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1162,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "323:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1161,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "323:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1164,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "352:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1163,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "352:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "322:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1166,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "389:0:4"
+            },
+            "scope": 1265,
+            "src": "305:136:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1194,
+              "nodeType": "Block",
+              "src": "526:79:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1189,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3583,
+                        "src": "578:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1190,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1179,
+                          "src": "584:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1191,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1273,
+                        "src": "584:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1185,
+                              "name": "makerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1179,
+                              "src": "538:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            },
+                            "id": 1186,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "contractAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1275,
+                            "src": "538:25:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 1184,
+                          "name": "ERC20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2006,
+                          "src": "532:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC20_$2006_$",
+                            "typeString": "type(contract ERC20)"
+                          }
+                        },
+                        "id": 1187,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "532:32:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20_$2006",
+                          "typeString": "contract ERC20"
+                        }
+                      },
+                      "id": 1188,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "safeTransfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2060,
+                      "src": "532:45:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_contract$_ERC20Basic_$2038_$_t_address_$_t_uint256_$returns$__$bound_to$_t_contract$_ERC20Basic_$2038_$",
+                        "typeString": "function (contract ERC20Basic,address,uint256)"
+                      }
+                    },
+                    "id": 1192,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "532:68:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1193,
+                  "nodeType": "ExpressionStatement",
+                  "src": "532:68:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1195,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "erc20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1182,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1179,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1195,
+                  "src": "460:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1178,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "460:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1181,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1195,
+                  "src": "489:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1180,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "489:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "459:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1183,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "526:0:4"
+            },
+            "scope": 1265,
+            "src": "445:160:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1214,
+              "nodeType": "Block",
+              "src": "691:101:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1207,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3583,
+                        "src": "748:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1208,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1197,
+                          "src": "754:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1209,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "owner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1277,
+                        "src": "754:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1210,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1197,
+                          "src": "771:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1211,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1273,
+                        "src": "771:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TransferToTaker_$1265",
+                          "typeString": "library TransferToTaker"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1203,
+                              "name": "makerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1197,
+                              "src": "704:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            },
+                            "id": 1204,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "contractAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1275,
+                            "src": "704:25:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 1202,
+                          "name": "ERC721",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2401,
+                          "src": "697:6:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC721_$2401_$",
+                            "typeString": "type(contract ERC721)"
+                          }
+                        },
+                        "id": 1205,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "697:33:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC721_$2401",
+                          "typeString": "contract ERC721"
+                        }
+                      },
+                      "id": 1206,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "safeTransferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2499,
+                      "src": "697:50:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,address,uint256) external"
+                      }
+                    },
+                    "id": 1212,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "697:90:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1213,
+                  "nodeType": "ExpressionStatement",
+                  "src": "697:90:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1215,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "erc721",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1200,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1197,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1215,
+                  "src": "625:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1196,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "625:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1199,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1215,
+                  "src": "654:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1198,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "654:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "624:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1201,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "691:0:4"
+            },
+            "scope": 1265,
+            "src": "609:183:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1263,
+              "nodeType": "Block",
+              "src": "881:352:4",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                      "typeString": "enum Types.CurrencyType"
+                    },
+                    "id": 1227,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1222,
+                        "name": "makerItem",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1217,
+                        "src": "891:9:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                          "typeString": "struct Types.Item memory"
+                        }
+                      },
+                      "id": 1223,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "currencyType",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1279,
+                      "src": "891:22:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                        "typeString": "enum Types.CurrencyType"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1224,
+                          "name": "Types",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1288,
+                          "src": "917:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_Types_$1288_$",
+                            "typeString": "type(library Types)"
+                          }
+                        },
+                        "id": 1225,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "CurrencyType",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1271,
+                        "src": "917:18:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CurrencyType_$1271_$",
+                          "typeString": "type(enum Types.CurrencyType)"
+                        }
+                      },
+                      "id": 1226,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "ETHEREUM",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "917:27:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                        "typeString": "enum Types.CurrencyType"
+                      }
+                    },
+                    "src": "891:53:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "condition": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                        "typeString": "enum Types.CurrencyType"
+                      },
+                      "id": 1238,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1233,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "991:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        "id": 1234,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "currencyType",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1279,
+                        "src": "991:22:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                          "typeString": "enum Types.CurrencyType"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1235,
+                            "name": "Types",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1288,
+                            "src": "1017:5:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_Types_$1288_$",
+                              "typeString": "type(library Types)"
+                            }
+                          },
+                          "id": 1236,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "CurrencyType",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1271,
+                          "src": "1017:18:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_CurrencyType_$1271_$",
+                            "typeString": "type(enum Types.CurrencyType)"
+                          }
+                        },
+                        "id": 1237,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberName": "ERC20",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1017:24:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                          "typeString": "enum Types.CurrencyType"
+                        }
+                      },
+                      "src": "991:50:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseBody": {
+                      "condition": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                          "typeString": "enum Types.CurrencyType"
+                        },
+                        "id": 1249,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1244,
+                            "name": "makerItem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1217,
+                            "src": "1085:9:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          },
+                          "id": 1245,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "currencyType",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1279,
+                          "src": "1085:22:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                            "typeString": "enum Types.CurrencyType"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1246,
+                              "name": "Types",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1288,
+                              "src": "1111:5:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_Types_$1288_$",
+                                "typeString": "type(library Types)"
+                              }
+                            },
+                            "id": 1247,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "CurrencyType",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1271,
+                            "src": "1111:18:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_CurrencyType_$1271_$",
+                              "typeString": "type(enum Types.CurrencyType)"
+                            }
+                          },
+                          "id": 1248,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "ERC721",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1111:25:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                            "typeString": "enum Types.CurrencyType"
+                          }
+                        },
+                        "src": "1085:51:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "falseBody": {
+                        "id": 1259,
+                        "nodeType": "Block",
+                        "src": "1177:52:4",
+                        "statements": [
+                          {
+                            "expression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "hexValue": "63757272656e63795479706520646f6573206e6f74206578697374",
+                                  "id": 1256,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "string",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1192:29:4",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_stringliteral_e5cb6bb55c0dfbf3257fbfc6c8412c3c0ccd0c217919a2daed3cf7779ff14e89",
+                                    "typeString": "literal_string \"currencyType does not exist\""
+                                  },
+                                  "value": "currencyType does not exist"
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_stringliteral_e5cb6bb55c0dfbf3257fbfc6c8412c3c0ccd0c217919a2daed3cf7779ff14e89",
+                                    "typeString": "literal_string \"currencyType does not exist\""
+                                  }
+                                ],
+                                "id": 1255,
+                                "name": "revert",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [
+                                  3543,
+                                  3544
+                                ],
+                                "referencedDeclaration": 3544,
+                                "src": "1185:6:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                                  "typeString": "function (string memory) pure"
+                                }
+                              },
+                              "id": 1257,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1185:37:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_tuple$__$",
+                                "typeString": "tuple()"
+                              }
+                            },
+                            "id": 1258,
+                            "nodeType": "ExpressionStatement",
+                            "src": "1185:37:4"
+                          }
+                        ]
+                      },
+                      "id": 1260,
+                      "nodeType": "IfStatement",
+                      "src": "1081:148:4",
+                      "trueBody": {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 1251,
+                              "name": "makerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1217,
+                              "src": "1145:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "id": 1252,
+                              "name": "takerItem",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1219,
+                              "src": "1156:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              },
+                              {
+                                "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                                "typeString": "struct Types.Item memory"
+                              }
+                            ],
+                            "id": 1250,
+                            "name": "erc721",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1215,
+                            "src": "1138:6:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Item_$1280_memory_ptr_$_t_struct$_Item_$1280_memory_ptr_$returns$__$",
+                              "typeString": "function (struct Types.Item memory,struct Types.Item memory)"
+                            }
+                          },
+                          "id": 1253,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1138:28:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 1254,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1138:28:4"
+                      }
+                    },
+                    "id": 1261,
+                    "nodeType": "IfStatement",
+                    "src": "987:242:4",
+                    "trueBody": {
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1240,
+                            "name": "makerItem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1217,
+                            "src": "1049:9:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 1241,
+                            "name": "takerItem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1219,
+                            "src": "1060:9:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            },
+                            {
+                              "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                              "typeString": "struct Types.Item memory"
+                            }
+                          ],
+                          "id": 1239,
+                          "name": "erc20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1195,
+                          "src": "1043:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Item_$1280_memory_ptr_$_t_struct$_Item_$1280_memory_ptr_$returns$__$",
+                            "typeString": "function (struct Types.Item memory,struct Types.Item memory)"
+                          }
+                        },
+                        "id": 1242,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1043:27:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_tuple$__$",
+                          "typeString": "tuple()"
+                        }
+                      },
+                      "id": 1243,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1043:27:4"
+                    }
+                  },
+                  "id": 1262,
+                  "nodeType": "IfStatement",
+                  "src": "887:342:4",
+                  "trueBody": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1229,
+                          "name": "makerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "955:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 1230,
+                          "name": "takerItem",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1219,
+                          "src": "966:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          },
+                          {
+                            "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                            "typeString": "struct Types.Item memory"
+                          }
+                        ],
+                        "id": 1228,
+                        "name": "ethereum",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1177,
+                        "src": "946:8:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Item_$1280_memory_ptr_$_t_struct$_Item_$1280_memory_ptr_$returns$__$",
+                          "typeString": "function (struct Types.Item memory,struct Types.Item memory)"
+                        }
+                      },
+                      "id": 1231,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "946:30:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 1232,
+                    "nodeType": "ExpressionStatement",
+                    "src": "946:30:4"
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1264,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "transfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1220,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1217,
+                  "name": "makerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1264,
+                  "src": "814:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1216,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "814:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1219,
+                  "name": "takerItem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1264,
+                  "src": "843:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Item_$1280_memory_ptr",
+                    "typeString": "struct Types.Item"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1218,
+                    "name": "Types.Item",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1280,
+                    "src": "843:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                      "typeString": "struct Types.Item"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "813:58:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1221,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "881:0:4"
+            },
+            "scope": 1265,
+            "src": "796:437:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1266,
+        "src": "247:988:4"
+      }
+    ],
+    "src": "0:1235:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-01T21:00:29.128Z"
+}

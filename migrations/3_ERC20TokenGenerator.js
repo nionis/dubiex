@@ -2,13 +2,13 @@
 
 const Deploy = require("solidity-utils/helpers/Deployer");
 
-const DUBIex = artifacts.require("./DUBIex.sol");
+const ERC20TokenGenerator = artifacts.require("./ERC20TokenGenerator.sol");
 
 module.exports = async (deployer, network) => {
   if (network === "develop") return;
 
   const deploy = Deploy(deployer, network);
 
-  // --> dubiex
-  await deploy(DUBIex);
+  // --> generator
+  await deploy(ERC20TokenGenerator);
 };
