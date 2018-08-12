@@ -78,6 +78,18 @@ contract DUBIex is ReentrancyGuard, ERC721Holder {
     );
   }
 
+  // makes sure item created has correct ethereum address
+  function createItem(
+    uint256 value,
+    address contractAddress,
+    address owner,
+    Types.CurrencyType currencyType
+  ) internal returns (Types.Item) {
+    if (currencyType == Types.CurrencyType.ETHEREUM) contractAddress = address(0);
+
+    return Types.Item(value, contractAddress, owner, currencyType);
+  }
+
   function calculateValues(
     Types.Order memory order,
     uint256 makerValue,
@@ -126,7 +138,7 @@ contract DUBIex is ReentrancyGuard, ERC721Holder {
     ) return false;
 
     // create makerItem
-    Types.Item memory makerItem = Types.Item(makerValue, makerContractAddress, msg.sender, makerCurrencyType);
+    Types.Item memory makerItem = createItem(makerValue, makerContractAddress, msg.sender, makerCurrencyType);
 
     // check if we can receive makerItem successfuly
     bool isOk = makerItem.isApproved(weiSend);
@@ -144,7 +156,7 @@ contract DUBIex is ReentrancyGuard, ERC721Holder {
     orderBook[id] = Types.Order(
       id,
       makerItem,
-      Types.Item(takerValue, takerContractAddress, address(0x0), takerCurrencyType)
+      createItem(takerValue, takerContractAddress, address(0x0), takerCurrencyType)
     );
 
     emit MadeOrder(
@@ -178,14 +190,14 @@ contract DUBIex is ReentrancyGuard, ERC721Holder {
     if (takerValue == 0 || makerValue == 0) return false;
 
     // create makerItem
-    Types.Item memory makerItem = Types.Item(
+    Types.Item memory makerItem = createItem(
       makerValue,
       order.makerItem.contractAddress,
       order.makerItem.owner,
       order.makerItem.currencyType
     );
     // create takerItem
-    Types.Item memory takerItem = Types.Item(
+    Types.Item memory takerItem = createItem(
       takerValue,
       order.takerItem.contractAddress,
       msg.sender,

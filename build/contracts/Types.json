@@ -11,14 +11,14 @@
     "absolutePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/Types.sol",
     "exportedSymbols": {
       "Types": [
-        1288
+        1295
       ]
     },
-    "id": 1289,
+    "id": 1296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1267,
+        "id": 1274,
         "literals": [
           "solidity",
           "0.4",
@@ -33,31 +33,31 @@
         "contractKind": "library",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1288,
+        "id": 1295,
         "linearizedBaseContracts": [
-          1288
+          1295
         ],
         "name": "Types",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Types.CurrencyType",
-            "id": 1271,
+            "id": 1278,
             "members": [
               {
-                "id": 1268,
+                "id": 1275,
                 "name": "ETHEREUM",
                 "nodeType": "EnumValue",
                 "src": "88:8:5"
               },
               {
-                "id": 1269,
+                "id": 1276,
                 "name": "ERC20",
                 "nodeType": "EnumValue",
                 "src": "102:5:5"
               },
               {
-                "id": 1270,
+                "id": 1277,
                 "name": "ERC721",
                 "nodeType": "EnumValue",
                 "src": "113:6:5"
@@ -69,14 +69,14 @@
           },
           {
             "canonicalName": "Types.Item",
-            "id": 1280,
+            "id": 1287,
             "members": [
               {
                 "constant": false,
-                "id": 1273,
+                "id": 1280,
                 "name": "value",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "185:13:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -85,7 +85,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1272,
+                  "id": 1279,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "185:7:5",
@@ -99,10 +99,10 @@
               },
               {
                 "constant": false,
-                "id": 1275,
+                "id": 1282,
                 "name": "contractAddress",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "220:23:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -111,7 +111,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1274,
+                  "id": 1281,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "220:7:5",
@@ -125,10 +125,10 @@
               },
               {
                 "constant": false,
-                "id": 1277,
+                "id": 1284,
                 "name": "owner",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "249:13:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -137,7 +137,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1276,
+                  "id": 1283,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "249:7:5",
@@ -151,26 +151,26 @@
               },
               {
                 "constant": false,
-                "id": 1279,
+                "id": 1286,
                 "name": "currencyType",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "268:25:5",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                  "typeIdentifier": "t_enum$_CurrencyType_$1278",
                   "typeString": "enum Types.CurrencyType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1278,
+                  "id": 1285,
                   "name": "CurrencyType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1271,
+                  "referencedDeclaration": 1278,
                   "src": "268:12:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                    "typeIdentifier": "t_enum$_CurrencyType_$1278",
                     "typeString": "enum Types.CurrencyType"
                   }
                 },
@@ -180,20 +180,20 @@
             ],
             "name": "Item",
             "nodeType": "StructDefinition",
-            "scope": 1288,
+            "scope": 1295,
             "src": "167:131:5",
             "visibility": "public"
           },
           {
             "canonicalName": "Types.Order",
-            "id": 1287,
+            "id": 1294,
             "members": [
               {
                 "constant": false,
-                "id": 1282,
+                "id": 1289,
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1287,
+                "scope": 1294,
                 "src": "339:10:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -202,7 +202,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1281,
+                  "id": 1288,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "339:7:5",
@@ -216,26 +216,26 @@
               },
               {
                 "constant": false,
-                "id": 1284,
+                "id": 1291,
                 "name": "makerItem",
                 "nodeType": "VariableDeclaration",
-                "scope": 1287,
+                "scope": 1294,
                 "src": "355:14:5",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                  "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                   "typeString": "struct Types.Item"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1283,
+                  "id": 1290,
                   "name": "Item",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1280,
+                  "referencedDeclaration": 1287,
                   "src": "355:4:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                    "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                     "typeString": "struct Types.Item"
                   }
                 },
@@ -244,26 +244,26 @@
               },
               {
                 "constant": false,
-                "id": 1286,
+                "id": 1293,
                 "name": "takerItem",
                 "nodeType": "VariableDeclaration",
-                "scope": 1287,
+                "scope": 1294,
                 "src": "375:14:5",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                  "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                   "typeString": "struct Types.Item"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1285,
+                  "id": 1292,
                   "name": "Item",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1280,
+                  "referencedDeclaration": 1287,
                   "src": "375:4:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                    "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                     "typeString": "struct Types.Item"
                   }
                 },
@@ -273,12 +273,12 @@
             ],
             "name": "Order",
             "nodeType": "StructDefinition",
-            "scope": 1288,
+            "scope": 1295,
             "src": "320:74:5",
             "visibility": "public"
           }
         ],
-        "scope": 1289,
+        "scope": 1296,
         "src": "26:370:5"
       }
     ],
@@ -288,14 +288,14 @@
     "absolutePath": "/mnt/c/Users/stive/Documents/work/tsg/dubiex-contracts/contracts/DUBIex/Types.sol",
     "exportedSymbols": {
       "Types": [
-        1288
+        1295
       ]
     },
-    "id": 1289,
+    "id": 1296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1267,
+        "id": 1274,
         "literals": [
           "solidity",
           "0.4",
@@ -310,31 +310,31 @@
         "contractKind": "library",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1288,
+        "id": 1295,
         "linearizedBaseContracts": [
-          1288
+          1295
         ],
         "name": "Types",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Types.CurrencyType",
-            "id": 1271,
+            "id": 1278,
             "members": [
               {
-                "id": 1268,
+                "id": 1275,
                 "name": "ETHEREUM",
                 "nodeType": "EnumValue",
                 "src": "88:8:5"
               },
               {
-                "id": 1269,
+                "id": 1276,
                 "name": "ERC20",
                 "nodeType": "EnumValue",
                 "src": "102:5:5"
               },
               {
-                "id": 1270,
+                "id": 1277,
                 "name": "ERC721",
                 "nodeType": "EnumValue",
                 "src": "113:6:5"
@@ -346,14 +346,14 @@
           },
           {
             "canonicalName": "Types.Item",
-            "id": 1280,
+            "id": 1287,
             "members": [
               {
                 "constant": false,
-                "id": 1273,
+                "id": 1280,
                 "name": "value",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "185:13:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -362,7 +362,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1272,
+                  "id": 1279,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "185:7:5",
@@ -376,10 +376,10 @@
               },
               {
                 "constant": false,
-                "id": 1275,
+                "id": 1282,
                 "name": "contractAddress",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "220:23:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -388,7 +388,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1274,
+                  "id": 1281,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "220:7:5",
@@ -402,10 +402,10 @@
               },
               {
                 "constant": false,
-                "id": 1277,
+                "id": 1284,
                 "name": "owner",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "249:13:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -414,7 +414,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1276,
+                  "id": 1283,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "249:7:5",
@@ -428,26 +428,26 @@
               },
               {
                 "constant": false,
-                "id": 1279,
+                "id": 1286,
                 "name": "currencyType",
                 "nodeType": "VariableDeclaration",
-                "scope": 1280,
+                "scope": 1287,
                 "src": "268:25:5",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                  "typeIdentifier": "t_enum$_CurrencyType_$1278",
                   "typeString": "enum Types.CurrencyType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1278,
+                  "id": 1285,
                   "name": "CurrencyType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1271,
+                  "referencedDeclaration": 1278,
                   "src": "268:12:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CurrencyType_$1271",
+                    "typeIdentifier": "t_enum$_CurrencyType_$1278",
                     "typeString": "enum Types.CurrencyType"
                   }
                 },
@@ -457,20 +457,20 @@
             ],
             "name": "Item",
             "nodeType": "StructDefinition",
-            "scope": 1288,
+            "scope": 1295,
             "src": "167:131:5",
             "visibility": "public"
           },
           {
             "canonicalName": "Types.Order",
-            "id": 1287,
+            "id": 1294,
             "members": [
               {
                 "constant": false,
-                "id": 1282,
+                "id": 1289,
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1287,
+                "scope": 1294,
                 "src": "339:10:5",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -479,7 +479,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1281,
+                  "id": 1288,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "339:7:5",
@@ -493,26 +493,26 @@
               },
               {
                 "constant": false,
-                "id": 1284,
+                "id": 1291,
                 "name": "makerItem",
                 "nodeType": "VariableDeclaration",
-                "scope": 1287,
+                "scope": 1294,
                 "src": "355:14:5",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                  "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                   "typeString": "struct Types.Item"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1283,
+                  "id": 1290,
                   "name": "Item",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1280,
+                  "referencedDeclaration": 1287,
                   "src": "355:4:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                    "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                     "typeString": "struct Types.Item"
                   }
                 },
@@ -521,26 +521,26 @@
               },
               {
                 "constant": false,
-                "id": 1286,
+                "id": 1293,
                 "name": "takerItem",
                 "nodeType": "VariableDeclaration",
-                "scope": 1287,
+                "scope": 1294,
                 "src": "375:14:5",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                  "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                   "typeString": "struct Types.Item"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1285,
+                  "id": 1292,
                   "name": "Item",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1280,
+                  "referencedDeclaration": 1287,
                   "src": "375:4:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Item_$1280_storage_ptr",
+                    "typeIdentifier": "t_struct$_Item_$1287_storage_ptr",
                     "typeString": "struct Types.Item"
                   }
                 },
@@ -550,12 +550,12 @@
             ],
             "name": "Order",
             "nodeType": "StructDefinition",
-            "scope": 1288,
+            "scope": 1295,
             "src": "320:74:5",
             "visibility": "public"
           }
         ],
-        "scope": 1289,
+        "scope": 1296,
         "src": "26:370:5"
       }
     ],
@@ -567,5 +567,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-01T21:00:29.095Z"
+  "updatedAt": "2018-08-07T13:30:06.833Z"
 }

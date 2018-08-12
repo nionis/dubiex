@@ -1,5 +1,5 @@
-require("babel-register")({ ignore: /node_modules\/(?!openzeppelin-solidity)/ });
-require("babel-polyfill");
+require('babel-register')({ ignore: /node_modules\/(?!openzeppelin-solidity\/test\/helpers)/ });
+require('babel-polyfill');
 const path = require("path");
 const fs = require("fs");
 const HDWalletProvider = require("truffle-hdwallet-provider");
